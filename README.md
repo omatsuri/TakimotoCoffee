@@ -1,1 +1,1 @@
-Simple template data
+Takimoto Coffee
