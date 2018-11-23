@@ -52,7 +52,7 @@ $(function() {
     } else {
         var _slide = $(".main-visual .pc li");
     }
-    var _speed = 5000;
+    var _speed = 7000;
     var _fadespeed = 3000;
     var _page = 1;
 
@@ -97,9 +97,7 @@ $(function() {
             _slide.eq(_page - 1).find('img').transition({
                 delay: 0,
                 "transform": "scale(1.1)"
-            }, _speed + _fadespeed, "linear", function() {
-
-            });
+            }, _speed + _fadespeed, "linear", function() {});
         }, _speed)
     }
 

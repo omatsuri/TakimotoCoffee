@@ -9,6 +9,10 @@
         width: 100%;
         position: absolute;
     }
+    .grayscale img {
+        filter: grayscale(100%);
+    }
+
 
     .pc {
         display: none !important;
@@ -50,12 +54,14 @@
         transform: translate(-50%, -50%);
         text-align: center;
         z-index: 1000;
-        @include query(1025) {
-            top: 50%;
-        }
-
         img {
             width: 5rem;
+        }
+        @include query(1024) {
+            top: 50%;
+            img {
+                width: 7rem;
+            }
         }
     }
     // scrolldown icon
@@ -116,17 +122,36 @@
 
 .concept {
     .message-wrapper {
-        background-color: #EAEAEA;
+        // background-color: #EAEAEA;
+        .heading-primary {
+                margin: 0 2%;
+                font-size: 2rem;
+                line-height: 3rem;
+                @include query(1024) {
+                // height: 40rem;
+                font-size: 3rem;
+                line-height: 5rem;
+            }
+        }
+
     }
 
-    .message-text {
-        height: 20rem;
-        -webkit-writing-mode: vertical-rl;
-        -ms-writing-mode: tb-rl;
-        writing-mode: vertical-rl;
-        margin: 0 auto;
-        line-height: 3rem;
-    }
+    // .message-text {
+    //     -webkit-writing-mode: vertical-rl;
+    //     -ms-writing-mode: tb-rl;
+    //     writing-mode: vertical-rl;
+    //     margin: 0 auto;
+    //     line-height: 7rem;
+    //     font-size: 1.4rem;
+    //     // padding: 1rem 15rem 2rem;
+    //     margin-bottom: 5rem;
+    //     height: 35rem;
+    //     // border: solid 0.1rem #333;
+    //     @include query(1024) {
+    //     height: 45rem;
+    //     font-size: 2rem;
+    // }
+    // }
 
     &-photo {
         margin: 0.5rem;
@@ -142,6 +167,13 @@
 
     .diamond {
         color: #7BA879;
+    }
+    .mark{
+        width: 1.5rem;
+        @include query(1024) {
+            vertical-align: bottom;
+            width: 2rem;
+        }
     }
 }
 // スマホ、タブレット
@@ -235,6 +267,7 @@
             -webkit-writing-mode: vertical-rl;
             -ms-writing-mode: tb-rl;
             writing-mode: vertical-rl;
+
         }
 
         &-image {
@@ -276,10 +309,12 @@
 
             &-noArea {
                 text-align: center;
-                margin: 0 0 3rem;
+                margin: 0 0 4rem;
             }
 
-            &-no {}
+            &-no {
+                font-size: 2rem;
+            }
 
             &-image {
                 img {
@@ -298,74 +333,24 @@
 //menu
 
 .menu {
-    h2 {
-        @include query(1024) {
-            margin-left: 10%;
-            text-align: left;
-        }
-    }
-}
+    background-color: #EAEAEA;
 
-.menulist {
-    @include query(1024) {
-        margin-top: 10rem;
-        margin-left: 30%;
-    }
-
-    &-head {
-        width: 6rem;
-        text-align: center;
-        margin-bottom: 2rem;
-        margin-left: 5%;
-        @include query(1024) {
-            width: 8rem;
-            margin: 0 0 0.5rem;
-        }
-    }
-
-    &-table {
-        width: 90%;
-        margin: 0 5%;
-        text-align: left;
-        @include query(1024) {
-            width: 100%;
-            margin: 0;
-        }
-    }
-
-    &-row {
-        //列の高さ
-        height: 2.5rem;
-        @include query(1024) {
-            height: 4rem;
-        }
-    }
-
-    &-col1 {
-        //カラム幅
-        width: 20rem;
-        @include query(1024) {
-            width: 40rem;
-        }
-    }
-
-    &-col2 {
-        //カラム幅(全体:90% - col1:70% = col2)
-    }
-
-    &-photos {
+    .menulist-photos {
         margin: 0 4%;
         @include query(1024) {
-            width: 65vw;
-            margin-left: 0;
+            width: 84vw;
+            // max-width: 1200px;
+
+            margin: 0 auto;
         }
     }
 
-    &-photo {
+    .menulist-photo {
         width: 94vw;
         @include query(1024) {
             width: 40vw;
-            margin-right: 4rem;
+            // max-width: 550px;
+            margin: 0 2vw;
         }
 
         img {
@@ -374,8 +359,96 @@
     }
 }
 
+.menulist-wrapper {
+    margin: 0 auto;
+    @include query(768) {
+        // max-width: 1250px;
+    }
+    @include query(1200) {
+        margin: 0 10%;
+    }
+    @extend %clearfix;
+}
+
+.menulist {
+    margin: 0 10%;
+    @include query(768) {
+        margin: 0 8%;
+        width: 33%;
+        float: left;
+    @include query(1024) {
+        margin: 0 0 0 12%;
+    }
+    @include query(1200) {
+        width: 30%;
+        margin: 0 1% 0 2%;
+    }
+    }
+
+    &-head {
+        width: 10rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        @include query(768) {
+            width: 14rem;
+            margin: 0 0 0.5rem;
+        }
+    }
+
+    &-table {
+        width: 90%;
+        text-align: left;
+        margin-left: 1rem;
+        @include query(768) {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    &-row {
+        //列の高さ
+        height: 3.5rem;
+        @include query(768) {
+            height: 4rem;
+        }
+    }
+
+    &-col1 {
+        //カラム幅
+        width: 20rem;
+        @include query(768) {
+            width: 20rem;
+        }
+        @include query(1024) {
+            width: 30rem;
+        }
+        @include query(1200) {
+            width: 35rem;
+        }
+
+        &-sub {
+            font-size: 1rem;
+            color: #999;
+            // フォントの関係で微妙に左に出て見えるため、パディングで調整
+            padding-left: 0.2rem;
+        }
+    }
+
+    &-col2 {
+        //カラム幅(全体:90% - col1:70% = col2)
+        @include query(1024) {
+            width: 6rem;
+        }
+    }
+}
+.coffee-mark {
+    color: #A69320;
+    margin-left: 1rem;
+
+}
+
 .service {
-    background-color: #EBEBEB;
+    // background-color: #EBEBEB;
     @extend %clearfix;
 }
 
@@ -392,10 +465,16 @@
         float: left;
     }
     @include query(1366) {
+        height: 60rem;
+    }
+    @include query(1680) {
+        height: 65rem;
+    }
+    @include query(1980) {
         height: 70rem;
     }
     @include query(2200) {
-        height: 80rem;
+        height: 75rem;
     }
 
     &-image {
@@ -413,7 +492,7 @@
     }
 
     &-discription {
-        padding: 3rem;
+        padding: 2rem;
     }
 
     &-text {
@@ -427,39 +506,42 @@
 
 .information {
     &-wrapper {
-        background-image: url("../images/information-1.jpg");
-        // background-attachment: fixed; //画面からの相対位置（背景固定）
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background-color: #003A13;
         position: relative;
         height: 50rem;
         @include query(1024) {
             height: 60rem;
-            background-image: url("../images/information-2.jpg");
         }
+        //
+        // &::before {
+        //     /* 透過した黒を重ねる */
+        //     background-color: rgba(0,0,0,0.3);
+        //     /* どの範囲に重ねるかを指定 */
+        //     position: absolute;
+        //     top: 0;
+        //     right: 0;
+        //     bottom: 0;
+        //     left: 0;
+        //     content: ' ';
+        // }
+    }
+    &-logo {
+        text-align: center;
+        margin-bottom: 5rem;
+        img {
+            width: 12rem;
 
-        &::before {
-            /* 透過した黒を重ねる */
-            background-color: rgba(0,0,0,0.3);
-            /* どの範囲に重ねるかを指定 */
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            content: ' ';
         }
     }
 
     &-contents {
         width: 100%;
         margin: 0 auto;
-        color: #FFF;
+        color: #fff;
         position: absolute;
         left: 0;
         right: 0;
-        @include query(1024) {
+        @include query(768) {
             width: 40rem;
         }
     }
@@ -510,8 +592,8 @@
 .slick-dots li {
     position: relative;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 1.9rem;
+    height: 1.9rem;
     margin: 0 5px;
     padding: 0;
     cursor: pointer;
@@ -521,9 +603,9 @@
     font-size: 0;
     line-height: 0;
     display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
     cursor: pointer;
     color: transparent;
     border: 0;
@@ -542,13 +624,13 @@
 }
 
 .slick-dots li button:before {
-    font-size: 10px;
-    line-height: 20px;
+    font-size: 1rem;
+    line-height: 2rem;
     position: absolute;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
     content: '●';
     text-align: center;
     opacity: 0.25;
